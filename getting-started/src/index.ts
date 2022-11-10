@@ -1,47 +1,67 @@
-/**
- * Fundermentals: TypeScript types.
-  */
+// Advanced Types
 
-// If a variable is initialized the type can be inffered.
-
-let scales: number = 123_456_789;
-let course: string = "TypeScript Fundermentals.";
-let is_published = true;
-
-// The any type: Dangerous
-let level;
-level = 1;
-level = "Level 1";
-
-// Arrays
-
-let numbers: number[] = [1, 2, 3];
-
-// Tuples
-let user: [number, string] = [1, "Patco"];
-
-// Enums
-const enum Size { Small, Medium, Large };
-let shirtSize: Size = Size.Medium;
-console.log(shirtSize);
- 
-// Functions
-function calculateTax(income: number, taxYear = 2022): number {
-  return (taxYear < 2022) ? income * 1.2 : income * 1.5;
+// Type Alias
+type Employee = {
+  id: number,
+  firstName: string,
+  lastName: string,
+  retiresOn: (date: Date) => void
 }
 
-console.log("R" + calculateTax(10700, 2015));
-console.log("R" + calculateTax(10700));
+let patco: Employee = {
+  id: 1,
+  firstName: "Patco",
+  lastName: "Erold",
+  retiresOn: (date: Date) => { console.log("Retires on : " + date); }
+}
 
-// Objects
-let employee: {
-  readonly id: number,
-  name: string,
-  retire: (date: Date) => void
-} = {
-  id: 1, name: "Patco",
-  retire: (date: Date) => {
-    console.log(date);
-    
+// Union types
+
+function kgToLbs(weight: number | string): number {
+  // Narrowing.
+  if (typeof weight === 'number') {
+    return weight * 2.2;
   }
+  
+  return parseInt(weight) * 2.2;
+}
+
+// Intersection Types
+
+type Draggable = {
+  drag: () => void
 };
+
+
+type Resizable = {
+  resize: () => void
+};
+
+type UIWidget = Draggable & Resizable;
+
+let textBox: UIWidget = {
+  drag: () => {},
+  resize: () => {}
+}
+
+// Literal Types
+type Quantity = 50 | 100;
+type Metric = "cm" | "inch"
+
+let quantity: Quantity = 50
+
+// Nullable Types
+function greet(name: string | null | undefined) {
+  console.log( name ?  name.toUpperCase() : "Hola!" );
+}
+
+// Optional chaining.
+
+type Customer = {birthday: Date};
+
+function getCustomer(id: number): Customer | null | undefined {
+  return id != 0 ? { birthday: new Date() } : null;
+}
+
+let customer = getCustomer(1);
+console.log(customer?.birthday);
