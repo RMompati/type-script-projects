@@ -1,0 +1,15 @@
+<form class="mb-5">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="text" [(ngModel)]="text" id="text"placeholder="Task">
+        <label for="text">Add Task</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="day" [(ngModel)]="day" id="day" placeholder="Day & Time">
+        <label for="day">Day & Time</label>
+    </div>
+    <div class="input-group mb-3">
+        <input type="checkbox" class="form-check-inut me-2" name="reminder" [(ngModel)]="reminder" id="reminder">
+        <label for="reminder">Set a reminder</label>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Save Task">
+</form>
