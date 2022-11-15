@@ -3,7 +3,8 @@
         <div class="card shadow col-sm-12 rounded">
             <div class="card-body">
                 <app-header class="p-2"></app-header>
-                <app-tasks></app-tasks>
+                <router-outlet></router-outlet>
+                <app-footer *ngIf="hasRoute('/')"></app-footer>
             </div>
         </div>
     </div>

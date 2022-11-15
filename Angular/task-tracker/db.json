@@ -19,10 +19,8 @@
       "reminder": true
     },
     {
-      "text": "Some Appointment",
-      "day": "November 15th",
       "reminder": true,
-      "id": 5
+      "id": 7
     }
   ]
 }

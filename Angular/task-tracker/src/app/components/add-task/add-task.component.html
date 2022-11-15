@@ -1,4 +1,4 @@
-<div class="card shadow p-2 mb-2">
+<div class="card shadow p-2 mb-2" *ngIf="showAddTask">
     <form (ngSubmit)="onSubmit()">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" name="text" [(ngModel)]="text" id="text"placeholder="Task">
