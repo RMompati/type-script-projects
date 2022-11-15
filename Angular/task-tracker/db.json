@@ -19,10 +19,10 @@
       "reminder": true
     },
     {
-      "id": 4,
-      "text": "Test Delete",
-      "day": "November 14th at 12:30pm",
-      "reminder": false
+      "text": "Some Appointment",
+      "day": "November 15th",
+      "reminder": true,
+      "id": 5
     }
   ]
 }
