@@ -1,0 +1,43 @@
+version: "3"
+services:
+  backend:
+    container_name: tt_be
+    build: backend
+    ports:
+      - "8085:5200"
+    depends_on:
+      - tt_db
+    environment:
+      - POSTGRES_DB=tasks
+      - POSTGRES_USER=tasktracker
+      - POSTGRES_PASSWORD=tasktracker
+    networks:
+      - tt-net
+  frontend:
+    container_name: tt_fe
+    build: task-tracker
+    ports:
+      - "4200:80"
+    networks:
+      - tt-net
+
+  tt_db:
+    container_name: tt_db
+    image: postgres:14-alpine
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - tt-net
+    environment:
+        POSTGRES_DB: tasks
+        POSTGRES_USER: tasktracker
+        POSTGRES_PASSWORD: tasktracker
+    expose:
+      - 5432
+
+volumes:
+  db-data:
+
+networks:
+  tt-net:
